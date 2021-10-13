@@ -39,11 +39,48 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
   
 }
 
+Person.prototype.eat = function(edible) {
+if (this.stomach < 10) {
+  this.stomach.push(edible);
+}
 
+}
+Person.prototype.poop = function (){
+  this.stomach = [];
+}
+
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+}
+
+const james = new Person ('Khaleel', 31);
+const latoya = new Person ('Latoya', 32);
+
+console.log(james.toString())
+
+james.eat('Lasagnnaaaaaa');
+james.eat('burger');
+james.eat('spaghitti');
+james.eat('hummos');
+james.eat('plov');
+james.eat('borch');
+james.eat('jerke');
+james.eat('cat food');
+james.eat('kebab');
+james.eat('tika masala');
+
+
+
+
+console.log('james stomach', james.stomach)
+console.log(james.poop());
 
 
 
@@ -63,11 +100,23 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
   
 }
 
+Car.prototype.fill = function(gallons) {
+  // if (this.tank < 10) {
+    this.tank = (gallons);
+  // }  
+}
 
+const cars = new Car ('M5', 40);
+
+console.log(cars.fill(80));
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
