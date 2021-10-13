@@ -124,9 +124,18 @@ console.log(cars.fill(80));
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+function Baby(name, age, favoriteToy) {
+ Person.call(this, name, age, favoriteToy); 
 }
+
+Baby.prototype.play = function() {
+  this.favoriteToy = x;
+  return `Playing with ${this.favoriteToy}`;
+}
+
+// const favToy = {favoriteToy: 'Teddy'};
+// console.log(favToy.play())
+// console.log(Baby.play(Teddy));
 
 
 /* 
