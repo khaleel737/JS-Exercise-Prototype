@@ -1,3 +1,5 @@
+'use strict';
+
 /*
   EXAMPLE TASK:
     - Write an Airplane constructor that initializes `name` from an argument.
@@ -43,15 +45,15 @@ function Person(name, age) {
   this.name = name;
   this.age = age;
   this.stomach = [];
-  
 }
 
 Person.prototype.eat = function(edible) {
-if (this.stomach < 10) {
+if (this.stomach.length < 10) {
   this.stomach.push(edible);
 }
-
 }
+
+
 Person.prototype.poop = function (){
   this.stomach = [];
 }
@@ -75,7 +77,7 @@ james.eat('jerke');
 james.eat('cat food');
 james.eat('kebab');
 james.eat('tika masala');
-
+james.eat('Shawerma');
 
 
 
@@ -105,18 +107,17 @@ function Car(model, milesPerGallon) {
   this.milesPerGallon = milesPerGallon;
   this.tank = 0;
   this.odometer = 0;
-  
 }
 
 Car.prototype.fill = function(gallons) {
-  // if (this.tank < 10) {
-    this.tank = (gallons);
-  // }  
+  if (this.tank === 0) {
+    this.tank =(gallons);
+  }  
 }
 
-const cars = new Car ('M5', 40);
+const honda = new Car ('M5', 40);
 
-console.log(cars.fill(80));
+honda.fill(80);
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -125,13 +126,20 @@ console.log(cars.fill(80));
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
- Person.call(this, name, age, favoriteToy); 
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
+//  Person.call(this, name, age, favoriteToy); 
 }
+
+
+Baby.prototype = Object.create(Person.prototype);
 
 Baby.prototype.play = function() {
   this.favoriteToy = x;
   return `Playing with ${this.favoriteToy}`;
 }
+
 
 // const favToy = {favoriteToy: 'Teddy'};
 // console.log(favToy.play())
